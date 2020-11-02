@@ -16,6 +16,8 @@
 		E72F73B5254ACFB5003B6D1C /* ShareDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F73B4254ACFB5003B6D1C /* ShareDemoUITests.m */; };
 		E72F73CD254ACFD6003B6D1C /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F73CC254ACFD6003B6D1C /* ShareViewController.m */; };
 		E72F73D4254ACFD6003B6D1C /* Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E72F73C9254ACFD6003B6D1C /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E768D072254FBB89008099E9 /* ShareItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E768D071254FBB89008099E9 /* ShareItemModel.m */; };
+		E768D084254FDEFB008099E9 /* NavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E768D083254FDEFB008099E9 /* NavViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,10 @@
 		E72F73D1254ACFD6003B6D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E72F73DD254AD065003B6D1C /* ShareDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareDemo.entitlements; sourceTree = "<group>"; };
 		E72F73DE254AD087003B6D1C /* Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Share.entitlements; sourceTree = "<group>"; };
+		E768D070254FBB89008099E9 /* ShareItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareItemModel.h; sourceTree = "<group>"; };
+		E768D071254FBB89008099E9 /* ShareItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareItemModel.m; sourceTree = "<group>"; };
+		E768D082254FDEFB008099E9 /* NavViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavViewController.h; sourceTree = "<group>"; };
+		E768D083254FDEFB008099E9 /* NavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +180,10 @@
 				E72F73DE254AD087003B6D1C /* Share.entitlements */,
 				E72F73CB254ACFD6003B6D1C /* ShareViewController.h */,
 				E72F73CC254ACFD6003B6D1C /* ShareViewController.m */,
+				E768D070254FBB89008099E9 /* ShareItemModel.h */,
+				E768D071254FBB89008099E9 /* ShareItemModel.m */,
+				E768D082254FDEFB008099E9 /* NavViewController.h */,
+				E768D083254FDEFB008099E9 /* NavViewController.m */,
 				E72F73D1254ACFD6003B6D1C /* Info.plist */,
 			);
 			path = Share;
@@ -363,6 +373,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E768D072254FBB89008099E9 /* ShareItemModel.m in Sources */,
+				E768D084254FDEFB008099E9 /* NavViewController.m in Sources */,
 				E72F73CD254ACFD6003B6D1C /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

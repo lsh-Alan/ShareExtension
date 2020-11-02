@@ -106,7 +106,7 @@
     
 }
 
-- (NSArray*) allFilesAtPath:(NSString*) dirString {
+- (NSArray *)allFilesAtPath:(NSString*) dirString {
        NSMutableArray* array = [NSMutableArray array];
 
        NSFileManager* fileMgr = [NSFileManager defaultManager];
