@@ -55,6 +55,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.frame = CGRectMake(15, y + 30, CGRectGetWidth(self.view.bounds) - 30, 44);
     cell.textLabel.text = @"操纵1";
+    cell.imageView.image = [UIImage imageNamed:@"1"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.layer.cornerRadius = 3;
     cell.layer.masksToBounds = YES;

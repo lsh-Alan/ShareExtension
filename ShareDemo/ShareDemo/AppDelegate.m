@@ -24,9 +24,6 @@
     self.window.rootViewController = vc;
     
     
-    
-    
-    
     return YES;
 }
 
@@ -44,16 +41,41 @@
         NSArray *array = [self allFilesAtPath:path];
         for (NSString *str  in array) {
             
-            NSData *data = [NSData dataWithContentsOfFile:str];
-            NSLog(@"============地址%@\n文件%@\n",str,data);
+            
+            
+            
         }
     }
-    
-    
+        
     return YES;
 }
 
+-(NSString*)getNewFilePathIfExistsByFilePath:(NSString*)filePath{
+    if (![self checkExistWithFilePath:filePath]) {
+        return filePath;
+    }else{
+        
+        NSString *filenameWithOutExtension = [filePath stringByDeletingPathExtension];
+        NSString *ext = [filePath pathExtension];
+        
+        int limit = 999;
+        NSString* newFilePath;
+        for(int i = 0; i < limit; i++){
+            newFilePath = [NSString stringWithFormat:@"%@(%d).%@", filenameWithOutExtension, i+1, ext];
+            if(![self checkExistWithFilePath:newFilePath]){
+                NSLog(@"%@", newFilePath);
+                break;
+            }
+        }
+        return newFilePath;
+    }
+}
 
+-(BOOL)checkExistWithFilePath:(NSString*)filePath{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+        return YES;
+    return NO;
+}
 
 -(UIViewController*) findBestViewController:(UIViewController*)vc {
     
@@ -107,30 +129,29 @@
 }
 
 - (NSArray *)allFilesAtPath:(NSString*) dirString {
-       NSMutableArray* array = [NSMutableArray array];
-
-       NSFileManager* fileMgr = [NSFileManager defaultManager];
-
-       NSArray* tempArray = [fileMgr contentsOfDirectoryAtPath:dirString error:nil];
-
-       for (NSString* fileName in tempArray) {
-           BOOL flag = YES;
-
-           NSString* fullPath = [dirString stringByAppendingPathComponent:fileName];
-
-           if ([fileMgr fileExistsAtPath:fullPath isDirectory:&flag]) {
-               if (!flag) {
-                   [array addObject:fullPath];
-
-               }
-
-           }
-
-       }
-
-       return array;
-
-   }
+    NSMutableArray* array = [NSMutableArray array];
+    
+    NSFileManager* fileMgr = [NSFileManager defaultManager];
+    
+    NSArray* tempArray = [fileMgr contentsOfDirectoryAtPath:dirString error:nil];
+    
+    for (NSString* fileName in tempArray) {
+        BOOL flag = YES;
+        
+        NSString* fullPath = [dirString stringByAppendingPathComponent:fileName];
+        
+        if ([fileMgr fileExistsAtPath:fullPath isDirectory:&flag]) {
+            if (!flag) {
+                [array addObject:fullPath];
+                
+            }
+            
+        }
+        
+    }
+    return array;
+    
+}
 
 
 
