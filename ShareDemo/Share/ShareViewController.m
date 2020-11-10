@@ -19,6 +19,7 @@
     NSMutableArray *array;
     UITableView *tableView;
     UIScrollView *headView;
+    NSString *currentTimeString;//文件每次进来都在不同的文件夹 app内根据需求去清理
 }
 
 @end
@@ -63,8 +64,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(topSafeStar)];
     [cell addGestureRecognizer:tap];
     
-    //缓存资源 先清后存
-    [self cleanCaches];
     [self didSelectPostWith:self.extensionContext];
 }
 
@@ -400,15 +399,23 @@
 
 - (void)openApp
 {
-    NSString *customURL = [NSString stringWithFormat:@"ShareDemo://shareExtension"] ;
-    UIResponder* responder = self;
-    while ((responder = [responder nextResponder]) != nil){
-        if([responder respondsToSelector:@selector(openURL:)] == YES){
-            [responder performSelector:@selector(openURL:) withObject:[NSURL URLWithString:customURL]];
-            [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-            break;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *customURL = [NSString stringWithFormat:@"ShareDemo://shareExtension"] ;
+        UIResponder* responder = self;
+        while ((responder = [responder nextResponder]) != nil){
+            if([responder respondsToSelector:@selector(openURL:)] == YES){
+                //跳转后 防止操作此次文件夹 修改获取路径时间戳值
+                self->currentTimeString = [NSString stringWithFormat:@"%0.f",[[NSDate date] timeIntervalSince1970]];
+                //
+                [responder performSelector:@selector(openURL:) withObject:[NSURL URLWithString:customURL]];
+                //多次跳转会卡死 eg：微信的文档
+                //[self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+
+                break;
+            }
         }
-    }
+    });
+    
 }
 
 //获取视频一桢截图
